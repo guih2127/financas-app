@@ -7,6 +7,7 @@ namespace api.Persistence
     public class AppDbContext : DbContext
     {
         public DbSet<OperacaoEntity> Operacoes { get; set; }
+        public DbSet<CategoriaOperacaoEntity> OperacaoCategorias { get; set; }
         
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

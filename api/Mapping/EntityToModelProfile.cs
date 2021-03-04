@@ -1,7 +1,8 @@
 using api.Domain.Entities;
+using api.Models;
 using AutoMapper;
 
-namespace api.Models
+namespace api.Mapping
 {
     public class EntityToModelProfile : Profile
     {

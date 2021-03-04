@@ -46,6 +46,11 @@ namespace api
             services.AddScoped<IOperacaoRepository, OperacaoRepository>();
             services.AddScoped<IOperacaoService, OperacaoService>();
 
+            services.AddScoped<ICategoriaOperacaoRepository, CategoriaOperacaoRepository>();
+            services.AddScoped<ICategoriaOperacaoService, CategoriaOperacaoService>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddAutoMapper(typeof(Startup));
 
         }
