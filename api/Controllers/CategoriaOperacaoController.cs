@@ -27,6 +27,7 @@ namespace api.Controllers
         {
             var entidadesCategoria = await _categoriaOperacaoService.ListAsync();
             var categorias = _mapper.Map<IEnumerable<CategoriaOperacaoEntity>, IEnumerable<CategoriaOperacaoModel>>(entidadesCategoria);
+
             return categorias;
         }
 
@@ -44,6 +45,16 @@ namespace api.Controllers
             
             var categoriaModel = _mapper.Map<CategoriaOperacaoEntity, CategoriaOperacaoModel>(categoria);
             return Ok(categoriaModel);
+        }
+
+        [HttpGet]
+        [Route("gastosCategoria")]
+        public async Task<IEnumerable<CategoriaOperacaoMensalModel>> GetCategoriasGastosAsync(int? mes = null)
+        {
+            var entidadesCategoria = await _categoriaOperacaoService.ListCategoriasGastosAsync(mes);
+            var categorias = _mapper.Map<IEnumerable<CategoriaOperacaoMensalEntity>, IEnumerable<CategoriaOperacaoMensalModel>>(entidadesCategoria);
+
+            return categorias;
         }
     }
 }

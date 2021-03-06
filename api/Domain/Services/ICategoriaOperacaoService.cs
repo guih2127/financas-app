@@ -9,5 +9,6 @@ namespace api.Domain.Services
     {
         Task<IEnumerable<CategoriaOperacaoEntity>> ListAsync();
         Task<SaveCategoriaOperacaoResponse> SaveAsync(CategoriaOperacaoEntity categoria);
+        Task<IEnumerable<CategoriaOperacaoMensalEntity>> ListCategoriasGastosAsync(int? mes = null);
     }
 }
