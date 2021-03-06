@@ -1,5 +1,6 @@
 using api.Domain.Entities;
 using api.Models;
+using api.Models.OperacaoModels;
 using AutoMapper;
 
 namespace api.Mapping
@@ -10,6 +11,7 @@ namespace api.Mapping
         {
             CreateMap<OperacaoEntity, OperacaoModel>();
             CreateMap<CategoriaOperacaoEntity, CategoriaOperacaoModel>();
+            CreateMap<OperacaoMensalEntity, OperacaoMensalModel>();
         }
     }
 }

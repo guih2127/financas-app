@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using api.Domain.Entities;
 using api.Domain.Repositories;
 using api.Domain.Services;
 using api.Domain.Services.Communication;
+using api.Models.OperacaoModels;
 
 namespace api.Services
 {
@@ -49,14 +51,20 @@ namespace api.Services
             }
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListDespesasAsync()
+        public async Task<OperacaoMensalEntity> ListDespesasAsync(int? mes = null)
         {
-            return await _operacaoRepository.ListDespesasAsync();
+            var despesas = await _operacaoRepository.ListDespesasAsync(mes);
+            var totalGastos = despesas.Select(d => d.Valor).Sum();
+
+            return new OperacaoMensalEntity { Total = totalGastos, operacoes = despesas };
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListReceitasAsync()
+        public async Task<OperacaoMensalEntity> ListReceitasAsync(int? mes = null)
         {
-            return await _operacaoRepository.ListReceitasAsync();
+            var receitas = await _operacaoRepository.ListReceitasAsync(mes);
+            var totalGastos = receitas.Select(d => d.Valor).Sum();
+
+            return new OperacaoMensalEntity { Total = totalGastos, operacoes = receitas };
         }
     }
 }

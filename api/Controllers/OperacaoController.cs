@@ -56,19 +56,21 @@ namespace api.Controllers
 
         [HttpGet]
         [Route("despesas")]
-        public async Task<IEnumerable<OperacaoModel>> GetAllDespesasAsync()
+        public async Task<OperacaoMensalModel> GetAllDespesasAsync()
         {
             var entidadesDespesa = await _operacaoService.ListDespesasAsync();
-            var despesas = _mapper.Map<IEnumerable<OperacaoEntity>, IEnumerable<OperacaoModel>>(entidadesDespesa);
+            var despesas = _mapper.Map<OperacaoMensalEntity, OperacaoMensalModel>(entidadesDespesa);
+
             return despesas;
         }
 
         [HttpGet]
         [Route("receitas")]
-        public async Task<IEnumerable<OperacaoModel>> GetAllReceitasAsync()
+        public async Task<OperacaoMensalModel> GetAllReceitasAsync([FromQuery] int? mes = null)
         {
-            var entidadesReceita = await _operacaoService.ListReceitasAsync();
-            var receitas = _mapper.Map<IEnumerable<OperacaoEntity>, IEnumerable<OperacaoModel>>(entidadesReceita);
+            var entidadesReceita = await _operacaoService.ListReceitasAsync(mes);
+            var receitas = _mapper.Map<OperacaoMensalEntity, OperacaoMensalModel>(entidadesReceita);
+
             return receitas;
         }
     }

@@ -7,8 +7,8 @@ namespace api.Domain.Repositories
     public interface IOperacaoRepository
     {
         Task<IEnumerable<OperacaoEntity>> ListAsync();
-        Task<IEnumerable<OperacaoEntity>> ListReceitasAsync();
-        Task<IEnumerable<OperacaoEntity>> ListDespesasAsync();
+        Task<IEnumerable<OperacaoEntity>> ListReceitasAsync(int? mes = null);
+        Task<IEnumerable<OperacaoEntity>> ListDespesasAsync(int? mes = null);
         Task<OperacaoEntity> GetByIdAsync(int id);
         Task AddAsync(OperacaoEntity operacao);
     }

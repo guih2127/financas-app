@@ -11,6 +11,7 @@ namespace api.Models
         {
             CreateMap<SaveCategoriaOperacaoModel, CategoriaOperacaoEntity>();
             CreateMap<SaveOperacaoModel, OperacaoEntity>();
+            CreateMap<OperacaoMensalModel, OperacaoMensalEntity>();
         }
     }
 }

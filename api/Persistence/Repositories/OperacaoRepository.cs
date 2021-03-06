@@ -37,23 +37,31 @@ namespace api.Persistence.Repositories
             await _context.Operacoes.AddAsync(operacao);
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListReceitasAsync()
+        public async Task<IEnumerable<OperacaoEntity>> ListReceitasAsync(int? mes = null)
         {
             var operacoes = await _context.Operacoes
                 .Include(o => o.CategoriaOperacao)
                 .ToListAsync();
 
             var receitas = operacoes.Where(o => o.TipoOperacao == TipoOperacaoEnum.Receita);
+
+            if (mes != null)
+                receitas = receitas.Where(r => r.DataCriacao.Month == mes);
+
             return receitas.Where(o => o.Status == StatusEnum.Ativo);
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListDespesasAsync()
+        public async Task<IEnumerable<OperacaoEntity>> ListDespesasAsync(int? mes = null)
         {
             var operacoes = await _context.Operacoes
                 .Include(o => o.CategoriaOperacao)
                 .ToListAsync();
             
             var despesas = operacoes.Where(o => o.TipoOperacao == TipoOperacaoEnum.Despesa);
+
+            if (mes != null)
+                despesas = despesas.Where(r => r.DataCriacao.Month == mes);
+
             return despesas.Where(o => o.Status == StatusEnum.Ativo);
         }
     }
