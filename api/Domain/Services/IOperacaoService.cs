@@ -8,7 +8,7 @@ namespace api.Domain.Services
 {
     public interface IOperacaoService
     {
-        Task<IEnumerable<OperacaoEntity>> ListAsync();
+        Task<IEnumerable<OperacaoEntity>> ListAsync(int? mes = null);
         Task<OperacaoMensalEntity> ListDespesasAsync(int? mes = null);
         Task<OperacaoMensalEntity> ListReceitasAsync(int? mes = null);
         Task<OperacaoEntity> GetByIdAsync(int id);

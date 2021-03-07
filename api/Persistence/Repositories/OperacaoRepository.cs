@@ -13,11 +13,14 @@ namespace api.Persistence.Repositories
         {
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListAsync()
+        public async Task<IEnumerable<OperacaoEntity>> ListAsync(int? mes = null)
         {
             var operacoes = await _context.Operacoes
                 .Include(o => o.CategoriaOperacao)
                 .ToListAsync();
+
+            if (mes != null)
+                operacoes = operacoes.Where(r => r.DataCriacao.Month == mes).ToList();
             
             return operacoes.Where(o => o.Status == StatusEnum.Ativo);
         }

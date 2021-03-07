@@ -21,9 +21,9 @@ namespace api.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<OperacaoEntity>> ListAsync()
+        public async Task<IEnumerable<OperacaoEntity>> ListAsync(int? mes = null)
         {
-            return await _operacaoRepository.ListAsync();
+            return await _operacaoRepository.ListAsync(mes);
         }
 
         public async Task<OperacaoEntity> GetByIdAsync(int id)
