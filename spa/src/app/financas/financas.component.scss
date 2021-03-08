@@ -1,0 +1,40 @@
+.main {
+    display: flex;
+    color: #d64161;
+}
+
+.title {
+    color:#d64161;
+    margin: 20px;
+}
+
+.meses {
+    margin: 20px;
+}
+
+.operacoes {
+    border: 5px solid #d64161;
+    border-radius: 10px;
+    min-height: 65vh;
+    width: 50vh;
+    padding: 20px;
+    margin: 20px;
+}
+
+.despesas {
+    border: 5px solid #d64161;
+    border-radius: 10px;
+    min-height: 65vh;
+    width: 50vh;
+    padding: 20px;
+    margin: 20px;
+}
+
+.receitas {
+    border: 5px solid #d64161;
+    border-radius: 10px;
+    min-height: 65vh;
+    width: 50vh;
+    padding: 20px;
+    margin: 20px;
+}

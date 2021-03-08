@@ -1,0 +1,38 @@
+<div class="title">
+    <h1>Gestão de Finanças</h1>
+</div>
+<div class="meses">
+    <select id='meses' name='mes' [(ngModel)]="mesSelecionado" (change)="obterDados()">
+        <option *ngFor="let mes of meses" [value]="mes.id">
+          {{mes.nome}}
+        </option>    
+    </select>
+</div>
+
+<div class="main">
+    <div class="operacoes" *ngIf="operacoes">
+        <h2>Todas as operações</h2>
+        <div class="operacao" *ngFor="let operacao of operacoes">
+            <h3>{{ operacao.nome }}</h3>
+            <p>R$ {{ operacao.valor }}</p>
+        </div>
+    </div>
+    
+    <div class="receitas" *ngIf="receitas">
+        <h2>Receitas</h2>
+        <div class="receita" *ngFor="let receita of receitas.operacoes">
+            <h3>{{ receita.nome }}</h3>
+            <p>R$ {{ receita.valor }}</p>
+        </div>
+        <p>Total: R$ {{receitas.total}}</p>
+    </div>
+    
+    <div class="despesas" *ngIf="despesas">
+        <h2>Receitas</h2>
+        <div class="despesa" *ngFor="let despesa of despesas.operacoes">
+            <h3>{{ despesa.nome }}</h3>
+            <p>R$ {{ despesa.valor }}</p>
+        </div>
+        <p>Total: R$ {{despesas.total}}</p>
+    </div>
+</div>
